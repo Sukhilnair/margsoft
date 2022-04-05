@@ -1,0 +1,10 @@
+{
+    "endpoint": "primary",
+    "integration": "on",
+    "url": "http://203.145.139.2:4001/anpr/get-anpr-data",
+    "method_type": "json",
+    "sync_interval_seconds": "-1",
+    "keep_event_interval_minutes": "-1",
+    "headers": {},
+    "extras": {}
+}
