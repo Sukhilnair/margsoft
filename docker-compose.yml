@@ -1,0 +1,68 @@
+version: '2'
+
+services:
+    anpr:
+        container_name: anpr
+        #image: uvdeployment/anpr-dev:video_req
+        image: uvdeployment/anpr-dev:intel_igfx_v2_1027_video
+        restart: always
+        network_mode: "host"
+        volumes:
+               #            - /var/run/docker.sock:/var/run/docker.sock
+            - ./uncanny/:/uncanny
+            - /etc/uncanny:/etc/uncanny
+            - /etc/localtime:/etc/localtime:ro
+            - /sys:/sys
+        #ports:
+        #   - 5000:5000
+        logging:
+           options:
+               max-size: "10m"
+               max-file: "5"
+               # mem_limit: 1050000000
+               #memswap_limit: 1050000000
+        #mem_reservation: 512m
+        devices:
+            - /dev/dri:/dev/dri
+        privileged: true
+    sink:
+        container_name: sink
+        image: uvdeployment/node-common:sink_v2.0.7.1
+        restart: always
+        network_mode: "host"
+        logging:
+           options:
+               max-size: "5m"
+               max-file: "2"
+        environment:
+            - UV_CONTAINER=localhost
+              # network_mode: "host"
+        #ports:
+        #  - 8201:8201
+        #  - 8202:8202
+        #  - 8203:8203
+        #  - 8204:8204
+        volumes:
+            - ./uncanny/:/uncanny
+            - /etc/localtime:/etc/localtime:ro
+    ui:
+        container_name: anpr_ui
+        image: uvdeployment/anpr-dev:anpr-config-ui-v3.4.7
+        environment:
+            - ANPR_HOST=localhost:5000
+            - SINK_HOST=localhost
+        restart: always
+        network_mode: "host"
+        logging:
+           options:
+               max-size: "2m"
+               max-file: "2"
+               #mem_limit: 130000000
+               #memswap_limit: 130000000 
+       #mem_reservation: 512m
+       # ports:
+       #  - 9090:9090
+       #network_mode: "host"
+        volumes:
+            - ./uncanny/:/uncanny
+            - /etc/localtime:/etc/localtime:ro
