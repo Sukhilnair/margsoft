@@ -10,7 +10,7 @@ do
 			echo "Do you wanna make change for anpr or vf (case sensitive):"
 			read input
 			echo $input
-			if [[ "$input" -eq "anpr" ]]
+			if [[ "$input" == "anpr" ]]
 			then
 				echo Enter the Previous anpr camera username:
 				read anpr_us
@@ -25,11 +25,11 @@ do
         			read new_ps
         			echo Enter the new anpr camera IP:
         			read new_ip
-				sudo sed -i s/"$anpr_us"/"$new_us"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-				sudo sed -i s/"$anpr_ps"/"$new_ps"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-				sudo sed -i s/"$anpr_ip"/"$new_ip"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-				cat /uncanny/anpr/instance1/config/config.json | grep rtsp
-			elif [[ "$input" -eq "vf" ]]
+				sudo sed -i s/"$anpr_us"/"$new_us"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+				sudo sed -i s/"$anpr_ps"/"$new_ps"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+				sudo sed -i s/"$anpr_ip"/"$new_ip"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+				cat External_Storage/uncanny/anpr/instance$one/config/config.json | grep rtsp
+			elif [[ "$input" == "vf" ]]
 			then
         			echo Enter the Previous vf camera username:
         			read vf_us
@@ -38,15 +38,15 @@ do
         			echo Enter the Previous vf camera IP:
         			read vf_ip
         			echo Enter the new vf camera username:
-        			read vf_us
+        			read new_us
         			echo Enter the new vf camera password:
-        			read vf_ps
+        			read new_ps
         			echo Enter the new vf camera IP:
-        			read vf_ip
-        			sudo sed -i s/"$vf_us"/"$new_us"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-        			sudo sed -i s/"$vf_ps"/"$new_ps"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-        			sudo sed -i s/"$vf_ip"/"$new_ip"/ /uncanny/anpr/instance$one/config/config.json 2>&1
-        			cat /uncanny/anpr/instance1/config/config.json | grep rtsp
+        			read new_ip
+        			sudo sed -i s/"$vf_us"/"$new_us"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+        			sudo sed -i s/"$vf_ps"/"$new_ps"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+        			sudo sed -i s/"$vf_ip"/"$new_ip"/ External_Storage/uncanny/anpr/instance$one/config/config.json 2>&1
+        			cat External_Storage/uncanny/anpr/instance$one/config/config.json | grep rtsp
 			else
 				echo "Please give the proper input"
 			fi
