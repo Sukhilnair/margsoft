@@ -15,3 +15,17 @@ echo "Cameras Which are active:"
 cat /tmp/list2.txt
 rm /tmp/list2.txt
 echo "##############################################################################################################################"
+echo "Do you want to activate/deactivate, type anything else for exit"
+read todo
+if [ "$todo" == "activate" || "$todo" == "deactivate" ]
+then
+    echo "Please mention which instance: "
+    read inst
+    if [ "$todo" == "activate" ]
+    then
+        curl -X PUT "http://0.0.0.0:5000/uvanpr/v2/cameras/$inst" -d '{ "activated": true }' -H "Content-Type: application/json"
+    else
+        curl -X PUT "http://0.0.0.0:5000/uvanpr/v2/cameras/$inst" -d '{ "activated": false }' -H "Content-Type: application/json"
+    fi
+fi
+        
