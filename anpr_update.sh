@@ -7,6 +7,7 @@ i=1
 if [ $i -le $count ]
 then
     cut -d: -f $i /tmp/list.txt | grep CAM
+    echo $i
     i=$(($i+1))
 fi
 cat /tmp/list2.txt
