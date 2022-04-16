@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "Please mention the IP of the device where you want to change the config"
-read ip
+#echo "Please mention the IP of the device where you want to change the config"
+#read ip
 curl http://0.0.0.0:5000/uvanpr/v2/cameras > /tmp/list.txt
 count=`cat /tmp/list.txt | wc -w`
 i=1
