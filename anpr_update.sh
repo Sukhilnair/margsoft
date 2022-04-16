@@ -6,7 +6,7 @@ count=`cat /tmp/list.txt | wc -w`
 i=1
 if [ $i -le $count ]
 then
-    cut -d: -f $i /tmp/list.txt | grep CAM >> /tmp/list2.txt
+    cut -d: -f $i /tmp/list.txt | grep CAM
     i=$(($i+1))
 fi
 cat /tmp/list2.txt
