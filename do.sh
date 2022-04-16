@@ -28,4 +28,5 @@ read todo
             read inst
             curl -X PUT "http://0.0.0.0:5000/uvanpr/v2/cameras/$inst" -d '{ "activated": false }' -H "Content-Type: application/json"
     else
+            sleep 2
     fi
