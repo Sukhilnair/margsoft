@@ -22,7 +22,7 @@ read todo
             echo "Please mention which instance: "
             read inst
             curl -X PUT "http://0.0.0.0:5000/uvanpr/v2/cameras/$inst" -d '{ "activated": true }' -H "Content-Type: application/json"
-    elif ["$todo" == "deactivate" ]
+    elif [ "$todo" == "deactivate" ]
     then
             echo "Please mention which instance: "
             read inst
