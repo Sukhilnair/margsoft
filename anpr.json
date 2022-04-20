@@ -1,0 +1,17 @@
+{
+    "capacity": 2,
+    "property": {
+        "camera1": {
+            "activated": true,
+            "camera_id": 1,
+            "external_id": null,
+            "name": "CAM1"
+        },
+        "camera2": {
+            "activated": true,
+            "camera_id": 2,
+            "external_id": null,
+            "name": "CAM2"
+        }
+    }
+}
