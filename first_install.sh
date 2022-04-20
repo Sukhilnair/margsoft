@@ -32,7 +32,13 @@ done
 if [ $i -eq 2 ]
 then
         sudo cp ./anpr.json /home/$USER/External_Storage/uncanny/anpr/
-fi    
+fi   
+git clone https://github.com/Sukhilnair/Release_license.git
+cd Release_licese
+sudo mkdir bin
+mv test_license bin/
+mv license_generator bin/
+cd ../
 echo "Copied all needful files. Restarting ANPR and SINK
 sudo docker restart anpr sink
 echo *****************Installtion Done*********************
