@@ -25,7 +25,7 @@ read number
 while [ $i -le $number ]
 do
        sudo cp ./config_$i.json /home/$USER/External_Storage/uncanny/instance$i/config/config.json
-       sudo cp ./client_$i.json /home/$USER/External_Storage/uncanny/sink/client/client_$i.json
+       sudo cp ./client_1.json /home/$USER/External_Storage/uncanny/sink/client/client_$i.json
        sudo cp ./pm2_app_$i.json /home/$USER/External_Storage/uncanny/sink/pm2_app.json
        sudo cp ./config_sink_$i.json /home/$USER/External_Storage/uncanny/sink/config/config_$i.json
        i=$(($i+1))
