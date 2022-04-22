@@ -1,3 +1,4 @@
+
 sudo apt-get install curl -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -14,6 +15,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 sudo docker login --username uvcustomer -p 'Uncanny!2#'
 sudo mkdir -p /home/$USER/External_Storage
+sudo chmod -R 777 /home/$USER/External_Storage/
 sudo docker-compose -f /home/$USER/External_Storage/docker-compose.yml up -d
 sleep 10
 sudo docker-compose down
@@ -24,7 +26,7 @@ echo number of instances:
 read number
 while [ $i -le $number ]
 do
-       sudo cp ./config_$i.json /home/$USER/External_Storage/uncanny/instance$i/config/config.json
+       sudo cp ./config_$i.json /home/$USER/External_Storage/uncanny/anpr/instance$i/config/config.json
        sudo cp ./client_1.json /home/$USER/External_Storage/uncanny/sink/client/client_$i.json
        sudo cp ./pm2_app_$i.json /home/$USER/External_Storage/uncanny/sink/pm2_app.json
        sudo cp ./config_sink_$i.json /home/$USER/External_Storage/uncanny/sink/config/config_$i.json
@@ -33,17 +35,21 @@ done
 if [ $i -eq 2 ]
 then
         sudo cp ./anpr.json /home/$USER/External_Storage/uncanny/anpr/
-fi   
+fi
 git clone https://github.com/Sukhilnair/Release_license.git
-cd Release_licese
+cd Release_license
 sudo mkdir bin
-mv test_license bin/
-mv license_generator bin/
+sudo mv test_license bin/
+sudo mv license_generator bin/
 cd ../
-echo "Copied all needful files. Restarting ANPR and SINK
+echo "Copied all needful files. Restarting ANPR and SINK"
 sudo docker restart anpr sink
 echo *****************Installtion Done*********************
 echo "Docker Pulled:"
 sudo docker images
+echo "*****************************************************"
+echo "*****************************************************"
+echo "Running Dockers:"
+sudo docker ps
 echo Please contact Uncanny Vision for license installtion.
 echo *********************Thank You*************************
