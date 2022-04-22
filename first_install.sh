@@ -13,6 +13,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 sudo docker login --username uvcustomer -p 'Uncanny!2#'
+sudo mkdir -p /home/$USER/External_Storage
 sudo docker-compose -f /home/$USER/External_Storage/docker-compose.yml up -d
 sleep 10
 sudo docker-compose down
